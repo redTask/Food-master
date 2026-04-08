@@ -202,3 +202,22 @@ hintChips.forEach((chip) => {
     handleSearch();
   });
 });
+
+// =====================
+//  THEME TOGGLE
+// =====================
+const themeToggle = document.getElementById("theme-toggle");
+const root = document.documentElement;
+
+// Apply saved theme on load (default: dark)
+const savedTheme = localStorage.getItem("mm-theme") || "dark";
+if (savedTheme === "light") {
+  root.setAttribute("data-theme", "light");
+}
+
+themeToggle.addEventListener("click", () => {
+  const isLight = root.getAttribute("data-theme") === "light";
+  const newTheme = isLight ? "dark" : "light";
+  root.setAttribute("data-theme", newTheme);
+  localStorage.setItem("mm-theme", newTheme);
+});
