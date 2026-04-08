@@ -1,30 +1,18 @@
-/* ========================================
-   MEAL MASTER – SCRIPT.JS
-   Fetches meals from TheMealDB API and
-   renders them as dynamic cards.
-   ======================================== */
 
-// =====================
-//  DOM REFERENCES
-// =====================
 const searchInput = document.getElementById("search-input");
 const searchBtn = document.getElementById("search-btn");
 const mealsContainer = document.getElementById("meals-container");
 const hintChips = document.querySelectorAll(".hint-chip");
 
-// =====================
-//  API CONFIGURATION
-// =====================
+
 const API_BASE = "https://www.themealdb.com/api/json/v1/1/search.php?s=";
 
-// =====================
-//  API FUNCTION
-// =====================
+
 
 /**
- * Fetches meals from TheMealDB API for the given search query.
- * @param {string} query - The search term entered by the user.
- * @returns {Promise<Object[]|null>} Array of meal objects or null if none found.
+
+ * @param {string} query 
+ * @returns {Promise<Object[]|null>} 
  */
 async function fetchMeals(query) {
   const response = await fetch(`${API_BASE}${encodeURIComponent(query)}`);
@@ -34,16 +22,10 @@ async function fetchMeals(query) {
   }
 
   const data = await response.json();
-  return data.meals; // null if no results
+  return data.meals; 
 }
 
-// =====================
-//  RENDER FUNCTIONS
-// =====================
 
-/**
- * Renders the loading spinner inside the meals container.
- */
 function renderLoading() {
   mealsContainer.innerHTML = `
     <div class="loading-state">
@@ -54,8 +36,8 @@ function renderLoading() {
 }
 
 /**
- * Renders an error message inside the meals container.
- * @param {string} message - The error message to display.
+
+ * @param {string} message 
  */
 function renderError(message) {
   mealsContainer.innerHTML = `
@@ -68,8 +50,8 @@ function renderError(message) {
 }
 
 /**
- * Renders a "no results" message inside the meals container.
- * @param {string} query - The search term that yielded no results.
+
+ * @param {string} query 
  */
 function renderNoResults(query) {
   mealsContainer.innerHTML = `
@@ -82,9 +64,9 @@ function renderNoResults(query) {
 }
 
 /**
- * Renders meal cards inside the meals container.
- * @param {Object[]} meals - Array of meal objects from the API.
- * @param {string} query - The original search query (for the results header).
+
+ * @param {Object[]} meals 
+ * @param {string} query 
  */
 function renderMeals(meals, query) {
   const resultsHeader = `
@@ -105,9 +87,9 @@ function renderMeals(meals, query) {
 }
 
 /**
- * Creates the HTML string for a single meal card.
- * @param {Object} meal - A meal object from the API.
- * @returns {string} HTML string for the meal card.
+
+ * @param {Object} meal 
+ * @returns {string} 
  */
 function createMealCard(meal) {
   return `
@@ -130,13 +112,10 @@ function createMealCard(meal) {
   `;
 }
 
-// =====================
-//  SEARCH HANDLER
-// =====================
 
 /**
- * Handles the search flow: validates input, shows loading,
- * fetches data, and renders results or errors.
+
+
  */
 async function handleSearch() {
   const query = searchInput.value.trim();
@@ -148,7 +127,7 @@ async function handleSearch() {
     return;
   }
 
-  // Show loading state
+
   renderLoading();
 
   try {
@@ -166,14 +145,11 @@ async function handleSearch() {
   }
 }
 
-// =====================
-//  UTILITY FUNCTIONS
-// =====================
 
 /**
- * Escapes HTML special characters to prevent XSS.
- * @param {string} str - Raw string to escape.
- * @returns {string} Escaped string safe for innerHTML.
+
+ * @param {string} str - 
+ * @returns {string} 
  */
 function escapeHTML(str) {
   const div = document.createElement("div");
@@ -181,21 +157,18 @@ function escapeHTML(str) {
   return div.innerHTML;
 }
 
-// =====================
-//  EVENT LISTENERS
-// =====================
 
-// Search button click
+
 searchBtn.addEventListener("click", handleSearch);
 
-// Enter key in search input
+
 searchInput.addEventListener("keydown", (event) => {
   if (event.key === "Enter") {
     handleSearch();
   }
 });
 
-// Hint chip clicks
+
 hintChips.forEach((chip) => {
   chip.addEventListener("click", () => {
     searchInput.value = chip.dataset.query;
@@ -203,13 +176,11 @@ hintChips.forEach((chip) => {
   });
 });
 
-// =====================
-//  THEME TOGGLE
-// =====================
+
 const themeToggle = document.getElementById("theme-toggle");
 const root = document.documentElement;
 
-// Apply saved theme on load (default: dark)
+
 const savedTheme = localStorage.getItem("mm-theme") || "dark";
 if (savedTheme === "light") {
   root.setAttribute("data-theme", "light");

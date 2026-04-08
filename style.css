@@ -1,9 +1,4 @@
-/* ========================================
-   MEAL MASTER – STYLE.CSS
-   Modern, responsive recipe finder UI
-   ======================================== */
 
-/* ---------- CSS VARIABLES (Dark – default) ---------- */
 :root {
   --clr-bg: #0f1117;
   --clr-surface: #1a1d27;
@@ -28,7 +23,7 @@
   --transition-smooth: 0.35s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* ---------- LIGHT THEME OVERRIDES ---------- */
+
 [data-theme="light"] {
   --clr-bg: #f5f5f7;
   --clr-surface: #ffffff;
@@ -43,7 +38,7 @@
   --shadow-card: 0 4px 20px rgba(0, 0, 0, 0.08), 0 1px 3px rgba(0, 0, 0, 0.06);
 }
 
-/* ---------- RESET & BASE ---------- */
+
 *,
 *::before,
 *::after {
@@ -69,7 +64,7 @@ body {
   transition: background-color 0.4s ease, color 0.4s ease;
 }
 
-/* Subtle animated grain background */
+
 body::before {
   content: "";
   position: fixed;
@@ -96,7 +91,7 @@ a:hover {
   color: var(--clr-accent-hover);
 }
 
-/* ---------- HEADER ---------- */
+
 #site-header {
   position: relative;
   z-index: 10;
@@ -142,7 +137,7 @@ a:hover {
   font-weight: 400;
 }
 
-/* ---------- SEARCH SECTION ---------- */
+
 #search-section {
   position: relative;
   z-index: 10;
@@ -213,7 +208,7 @@ a:hover {
   transform: scale(0.97);
 }
 
-/* Hint chips */
+
 .search-hints {
   display: flex;
   align-items: center;
@@ -247,7 +242,7 @@ a:hover {
   background: rgba(249, 115, 22, 0.06);
 }
 
-/* ---------- MAIN / MEALS CONTAINER ---------- */
+
 #meals-container {
   position: relative;
   z-index: 10;
@@ -258,7 +253,7 @@ a:hover {
   padding: 1.5rem 1.5rem 3rem;
 }
 
-/* --- Welcome state --- */
+
 .welcome-state {
   display: flex;
   flex-direction: column;
@@ -288,7 +283,7 @@ a:hover {
   max-width: 380px;
 }
 
-/* --- Loading state --- */
+
 .loading-state {
   display: flex;
   flex-direction: column;
@@ -318,7 +313,7 @@ a:hover {
   font-weight: 500;
 }
 
-/* --- Error / empty state --- */
+
 .error-state {
   display: flex;
   flex-direction: column;
@@ -348,7 +343,7 @@ a:hover {
   max-width: 360px;
 }
 
-/* --- Meals grid --- */
+
 .meals-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
@@ -356,7 +351,7 @@ a:hover {
   animation: fadeInUp 0.5s ease;
 }
 
-/* --- Meal card --- */
+
 .meal-card {
   background: var(--clr-surface);
   border: 1px solid var(--clr-border);
@@ -390,7 +385,7 @@ a:hover {
   transform: scale(1.08);
 }
 
-/* Gradient overlay on image */
+
 .meal-card-image::after {
   content: "";
   position: absolute;
@@ -448,7 +443,7 @@ a:hover {
   font-size: 0.8rem;
 }
 
-/* --- Results header --- */
+
 .results-header {
   margin-bottom: 1.5rem;
   animation: fadeIn 0.4s ease;
@@ -470,7 +465,7 @@ a:hover {
   margin-top: 0.2rem;
 }
 
-/* ---------- FOOTER ---------- */
+
 #site-footer {
   position: relative;
   z-index: 10;
@@ -481,7 +476,7 @@ a:hover {
   border-top: 1px solid var(--clr-border);
 }
 
-/* ---------- THEME TOGGLE ---------- */
+
 .theme-toggle {
   position: fixed;
   top: 1.25rem;
@@ -516,7 +511,7 @@ a:hover {
   transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
-/* Dark mode: show sun icon, hide moon */
+
 .theme-toggle .icon-sun {
   opacity: 1;
   transform: rotate(0deg);
@@ -526,7 +521,7 @@ a:hover {
   transform: rotate(-90deg);
 }
 
-/* Light mode: show moon icon, hide sun */
+
 [data-theme="light"] .theme-toggle .icon-sun {
   opacity: 0;
   transform: rotate(90deg);
@@ -536,7 +531,7 @@ a:hover {
   transform: rotate(0deg);
 }
 
-/* ---------- ANIMATIONS ---------- */
+
 @keyframes fadeIn {
   from { opacity: 0; }
   to { opacity: 1; }
@@ -553,7 +548,7 @@ a:hover {
   }
 }
 
-/* Staggered card entrance */
+
 .meal-card {
   animation: fadeInUp 0.45s ease both;
 }
@@ -571,9 +566,9 @@ a:hover {
 .meal-card:nth-child(11) { animation-delay: 0.43s; }
 .meal-card:nth-child(12) { animation-delay: 0.47s; }
 
-/* ---------- RESPONSIVE ---------- */
 
-/* Tablet */
+
+
 @media (max-width: 768px) {
   .logo h1 {
     font-size: 1.8rem;
@@ -598,7 +593,7 @@ a:hover {
   }
 }
 
-/* Mobile */
+
 @media (max-width: 480px) {
   #site-header {
     padding: 2rem 1rem 1rem;
